@@ -11,6 +11,7 @@ const MyNotes = () => {
             <Button style={{marginLeft: 10, marginBottom: 6}} size='lg'>
                 Create New Note
             </Button> 
+          </Link>
               {notes.map(note=> (
                   <Card style={{margin: 10}}>
                     <Card.Header style={{display: "flex"}}>
@@ -27,10 +28,22 @@ const MyNotes = () => {
                         {note.title}
                       </span>
                       <div>
-                        <Button>Edit</Button>
-                        <Button variant='danger' className='mx-2'>Delete</Button>
+                        <Button href={`/note/${note._id}`}>Edit</Button>
+                        <Button variant='danger' className='mx-2' >
+                          Delete</Button>
                       </div>
                     </Card.Header>
+                    <Card.Body>
+                      <blockquote className="blockquote mb-0">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+                            posuere erat a ante.{' '}
+                        </p>
+                        <footer className="blockquote-footer">
+                          Someone famous in <cite title="Source Title">Source Title</cite>
+                        </footer>
+                      </blockquote>
+                    </Card.Body>
                   </Card>
     
                 ))
@@ -38,7 +51,7 @@ const MyNotes = () => {
               }
 
             
-        </Link>
+        
     </Mainscreen>  
 
   );
