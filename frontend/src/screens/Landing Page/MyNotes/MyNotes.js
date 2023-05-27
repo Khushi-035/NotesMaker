@@ -1,8 +1,10 @@
 import React from 'react'
 import Mainscreen from '../../../components/Header/Mainscreen';
 import { Link } from 'react-router-dom';
-import { Accordion, AccordionCollapse, Badge, Button, Card } from 'react-bootstrap';
+import { Accordion, AccordionButton, AccordionCollapse, Badge, Button, Card } from 'react-bootstrap';
 import notes, {} from '../../../data/notes';
+import AccordionHeader from 'react-bootstrap/esm/AccordionHeader';
+import AccordionBody from 'react-bootstrap/esm/AccordionBody';
 
 const MyNotes = () => {
   return (
@@ -27,7 +29,8 @@ const MyNotes = () => {
                           fontSize: 18,
                         }}
                       >
-                                {note.title}
+                        <AccordionButton as={Card.Text} variant="link" eventKey="0">{note.title}</AccordionButton>
+                                
                             
                         
                       </span>
@@ -37,7 +40,7 @@ const MyNotes = () => {
                           Delete</Button>
                       </div>
                     </Card.Header>
-                        <Accordion.Collapse eventKey="0">
+                        <AccordionBody eventKey="0">
                             <Card.Body>
                               <h4>
                                 <Badge variant='success'>
@@ -54,7 +57,7 @@ const MyNotes = () => {
                                 </footer>
                                 </blockquote>
                             </Card.Body>
-                        </Accordion.Collapse>
+                        </AccordionBody>
                                              
                   </Card>
                 </Accordion>
