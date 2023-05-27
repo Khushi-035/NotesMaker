@@ -1,7 +1,7 @@
 import React from 'react'
 import Mainscreen from '../../../components/Header/Mainscreen';
 import { Link } from 'react-router-dom';
-import { Button, Card } from 'react-bootstrap';
+import { Accordion, AccordionCollapse, Badge, Button, Card } from 'react-bootstrap';
 import notes, {} from '../../../data/notes';
 
 const MyNotes = () => {
@@ -12,7 +12,9 @@ const MyNotes = () => {
                 Create New Note
             </Button> 
           </Link>
-              {notes.map(note=> (
+              {notes.map((note)=> (
+
+                <Accordion>
                   <Card style={{margin: 10}}>
                     <Card.Header style={{display: "flex"}}>
                       <span
@@ -25,7 +27,9 @@ const MyNotes = () => {
                           fontSize: 18,
                         }}
                       >
-                        {note.title}
+                                {note.title}
+                            
+                        
                       </span>
                       <div>
                         <Button href={`/note/${note._id}`}>Edit</Button>
@@ -33,19 +37,29 @@ const MyNotes = () => {
                           Delete</Button>
                       </div>
                     </Card.Header>
-                    <Card.Body>
-                      <blockquote className="blockquote mb-0">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                            posuere erat a ante.{' '}
-                        </p>
-                        <footer className="blockquote-footer">
-                          Someone famous in <cite title="Source Title">Source Title</cite>
-                        </footer>
-                      </blockquote>
-                    </Card.Body>
+                        <Accordion.Collapse eventKey="0">
+                            <Card.Body>
+                              <h4>
+                                <Badge variant='success'>
+                                    Category - {note.category}
+                                </Badge>
+                              </h4>
+
+                              <blockquote className="blockquote mb-0">
+                                <p>
+                                  {note.content}   
+                                </p>
+                                <footer className="blockquote-footer">
+                                  Created On- Date
+                                </footer>
+                                </blockquote>
+                            </Card.Body>
+                        </Accordion.Collapse>
+                                             
                   </Card>
-    
+                </Accordion>
+                
+                  
                 ))
               
               }
